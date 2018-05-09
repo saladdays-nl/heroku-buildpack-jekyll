@@ -125,7 +125,7 @@ private
   # generate jekyll
   def generate_jekyll_site
     puts "Building jekyll site"
-    pipe("env PATH=$PATH #{jekyll_environment_variables} bundle exec jekyll build jekyll build --config _config.yml,_config_production.yml --trace 2>&1")
+    pipe("env PATH=$PATH #{jekyll_environment_variables} bundle exec jekyll build jekyll build --config _config.yml,_config_#{ENV['JEKYLL_ENV']}.yml --trace 2>&1")
     unless $? == 0
       error "Failed to generate site with jekyll."
     end
